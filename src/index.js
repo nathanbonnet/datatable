@@ -25,6 +25,8 @@ root.render(
           state: 'State',
           zipCode: 'Zip Code'
         }}
+        columnFilter={'firstName'}
+        order={'asc'}
         dataNumber={true}
         paginationButton={true}
       />

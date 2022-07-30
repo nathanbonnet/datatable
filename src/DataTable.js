@@ -6,13 +6,14 @@ import DataNumber from './components/dataNumber';
 import Length from './components/Length';
 import Pagination from './components/pagination';
 import Header from "./components/header";
-import { body, dataNumber } from "./store/action";
+import { body, dataNumber, order } from "./store/action";
 import './styles/App.css';
 import { useSelector } from 'react-redux';
 
 const DataTable = (props) => {
   body(props.sources);
   dataNumber(props.sources.length);
+  order(props.order, props.columnFilter)
   let numberOfResult = useSelector((state) => state.result);
   return (
     <div className="bloc-table">

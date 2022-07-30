@@ -19,10 +19,6 @@ body {
   height: 100vh;
 }
 
-.icon {
-  margin-left: 10px
-}
-
 .container {
   display: flex;
   flex-direction: column;
@@ -49,10 +45,31 @@ th {
   margin-top: 1rem;
 }
 
-.page {
+.blocFilter {
   display: flex;
-  justify-content: space-between;
-  width: 15%;
+  align-items: center;
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 15px;
+}
+
+.filter span {
+  height: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  margin-left: 10px;
+}
+
+.page button {
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .footer-table {

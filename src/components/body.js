@@ -1,11 +1,32 @@
+import React, { useEffect } from 'react';
 import information from './information';
 import PropTypes from 'prop-types';
-import { dataNumber } from '../store/action';
+import { dataNumber, body } from '../store/action';
 import { useSelector } from 'react-redux';
+import { order } from '../store/action';
 
 const Body = (props) => {
     let sources = useSelector((state) => state.sources);
     const page = useSelector((state) => state.page)
+    let orderStore = useSelector((state) => state.order);
+    let columnFilter = useSelector((state) => state.name);
+
+    const sortFunction = (sources, name) => {
+        if(orderStore === 'asc') {
+            sources.sort((a, b) => (a[name].toLowerCase() > b[name].toLowerCase()) ? 1 : -1);
+            order('desc', name)
+        }
+        if(orderStore === 'desc') {
+            sources.sort((a, b) => (a[name].toLowerCase() < b[name].toLowerCase()) ? 1 : -1);
+            order('asc', name)
+        }
+        body([...sources])
+    }
+    
+    useEffect(() => {
+        sortFunction(sources, columnFilter)
+    }, []);
+
     let numberOfResult = useSelector((state) => state.result);
     dataNumber(sources.length);
     const datas = information(sources, numberOfResult, page);
