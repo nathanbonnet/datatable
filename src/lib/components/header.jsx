@@ -20,7 +20,7 @@ const Header = (props) => {
             sources.sort((a, b) => (a[name].toLowerCase() < b[name].toLowerCase()) ? 1 : -1);
             order('asc', name)
         }
-        body(sources)
+        body([...sources])
     }
 
     return (

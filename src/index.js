@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './styles/index.css';
-import DataTable from './DataTable';
+import './lib/styles/index.css';
+import DataTable from './lib/DataTable';
 import { Provider } from 'react-redux';
-import { store } from './store/index';
+import { store } from './lib/store/index';
 
 const dataStorage = JSON.parse(localStorage.getItem('employees'))
 const root = ReactDOM.createRoot(document.getElementById('root'));

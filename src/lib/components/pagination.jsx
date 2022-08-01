@@ -1,10 +1,10 @@
 import { pageSelected } from '../store/action';
 import { useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
 
-const Pagination = (props) => {
+const Pagination = () => {
     let dataLength = useSelector((state) => state.dataNumber);
-    let numberOfPage = Math.ceil(dataLength / props.numberResults)
+    let numberResults = useSelector((state) => state.result);
+    let numberOfPage = Math.ceil(dataLength / numberResults)
     let buttonArray = new Array(numberOfPage);
     return (
         <>
@@ -17,11 +17,6 @@ const Pagination = (props) => {
             <span>Next</span>
         </>
     )
-}
-
-Pagination.prototype = {
-    dataNumber: PropTypes.number,
-    numberResults: PropTypes.number
 }
 
 export default Pagination;

@@ -22,14 +22,14 @@ const Body = (props) => {
         }
         body([...sources])
     }
-    
+
     useEffect(() => {
         sortFunction(sources, columnFilter)
     }, []);
 
     let numberOfResult = useSelector((state) => state.result);
-    dataNumber(sources.length);
     const datas = information(sources, numberOfResult, page);
+    dataNumber(sources.length);
     return (
         !props.error ?
             datas.map(data => {
