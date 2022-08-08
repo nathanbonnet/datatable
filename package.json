@@ -1,5 +1,5 @@
 {
-  "name": "projet-14-datatable",
+  "name": "@nath_b/projet-14-datatable",
   "version": "0.1.0",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
@@ -56,6 +56,6 @@
   ],
   "repository": {
     "type": "git",
-    "url": "URL_OF_YOUR_REPOSITORY"
+    "url": "https://github.com/nathanbonnet/datatable"
   }
 }

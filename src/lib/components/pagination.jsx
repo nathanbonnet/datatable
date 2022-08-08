@@ -1,3 +1,4 @@
+import React from 'react';
 import { pageSelected } from '../store/action';
 import { useSelector } from 'react-redux';
 
