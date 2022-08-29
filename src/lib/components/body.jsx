@@ -43,7 +43,7 @@ const Body = (props) => {
                     </tr>
                 )
             })
-        : <p>Aucun élément trouvée</p>
+        : <p>Aucun élément trouvé</p>
     )
 }
 
