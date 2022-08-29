@@ -75,11 +75,11 @@ var Body = function Body(props) {
   });
   var datas = (0, _information.default)(sources, numberOfResult, page);
   (0, _action.dataNumber)(sources.length);
-  return !props.error ? datas.map(function (data) {
+  return datas.length ? datas.map(function (data) {
     return /*#__PURE__*/_react.default.createElement("tr", null, props.columns && Object.keys(props.columns).map(function (column) {
       return /*#__PURE__*/_react.default.createElement("td", null, data[column]);
     }));
-  }) : /*#__PURE__*/_react.default.createElement("p", null, "Aucun \xE9l\xE9ment trouv\xE9e");
+  }) : /*#__PURE__*/_react.default.createElement("p", null, "Aucun \xE9l\xE9ment trouv\xE9");
 };
 
 Body.prototype = {
