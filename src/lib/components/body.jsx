@@ -31,7 +31,7 @@ const Body = (props) => {
     const datas = information(sources, numberOfResult, page);
     dataNumber(sources.length);
     return (
-        !props.error ?
+        datas.length ?
             datas.map(data => {
                 return (
                     <tr>
