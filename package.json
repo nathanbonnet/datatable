@@ -1,6 +1,6 @@
 {
   "name": "@nath_b/projet-14-datatable",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
