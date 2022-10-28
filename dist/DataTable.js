@@ -40,15 +40,15 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var DataTable = function DataTable(props) {
-  (0, _action.body)(props.sources);
-  (0, _action.dataNumber)(props.sources.length);
+  (0, _action.body)(props.sources && props.sources);
+  (0, _action.dataNumber)(props.sources && props.sources.length);
   (0, _action.order)(props.order, props.columnFilter);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "bloc-table"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "header-table"
   }, props.show && /*#__PURE__*/_react.default.createElement(_Length.default, null), props.search && /*#__PURE__*/_react.default.createElement(_research.default, {
-    data: props.sources
+    data: props.sources && props.sources
   })), /*#__PURE__*/_react.default.createElement("table", null, /*#__PURE__*/_react.default.createElement("thead", null, /*#__PURE__*/_react.default.createElement("tr", null, props.columns && Object.entries(props.columns).map(function (_ref) {
     var _ref2 = _slicedToArray(_ref, 2),
         name = _ref2[0],

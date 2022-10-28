@@ -50,6 +50,8 @@ var Body = function Body(props) {
   });
 
   var sortFunction = function sortFunction(sources, name) {
+    if (sources === null) return;
+
     if (orderStore === 'asc') {
       sources.sort(function (a, b) {
         return a[name].toLowerCase() > b[name].toLowerCase() ? 1 : -1;
@@ -74,8 +76,8 @@ var Body = function Body(props) {
     return state.result;
   });
   var datas = (0, _information.default)(sources, numberOfResult, page);
-  (0, _action.dataNumber)(sources.length);
-  return datas.length ? datas.map(function (data) {
+  (0, _action.dataNumber)(sources && sources.length);
+  return datas ? datas.map(function (data) {
     return /*#__PURE__*/_react.default.createElement("tr", null, props.columns && Object.keys(props.columns).map(function (column) {
       return /*#__PURE__*/_react.default.createElement("td", null, data[column]);
     }));

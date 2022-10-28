@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 
 var information = function information(dataStorage, numberOfResult, page) {
+  if (dataStorage === null) return;
   return dataStorage.slice((page - 1) * numberOfResult, page * numberOfResult);
 };
 

@@ -21,6 +21,7 @@ var Research = function Research(props) {
   };
 
   var searchBanner = function searchBanner(value, data) {
+    if (!data) return;
     (0, _action.body)(filterData(data, value));
   };
 

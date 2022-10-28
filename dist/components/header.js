@@ -43,6 +43,8 @@ var Header = function Header(props) {
   });
 
   var sortFunction = function sortFunction(sources, name) {
+    if (!sources) return;
+
     if (orderStore === 'asc') {
       sources.sort(function (a, b) {
         return a[name].toLowerCase() > b[name].toLowerCase() ? 1 : -1;
