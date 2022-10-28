@@ -77,7 +77,7 @@ var Body = function Body(props) {
   });
   var datas = (0, _information.default)(sources, numberOfResult, page);
   (0, _action.dataNumber)(sources && sources.length);
-  return datas ? datas.map(function (data) {
+  return datas && datas.length ? datas.map(function (data) {
     return /*#__PURE__*/_react.default.createElement("tr", null, props.columns && Object.keys(props.columns).map(function (column) {
       return /*#__PURE__*/_react.default.createElement("td", null, data[column]);
     }));

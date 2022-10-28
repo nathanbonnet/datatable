@@ -15,7 +15,7 @@ var Research = function Research(props) {
   var filterData = function filterData(data, value) {
     return data.filter(function (d) {
       return Object.values(d).some(function (valueData) {
-        return valueData.toString().includes(value.toLowerCase());
+        return valueData && valueData.toString().includes(value.toLowerCase());
       });
     });
   };
