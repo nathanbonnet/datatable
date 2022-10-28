@@ -4,7 +4,7 @@ import { body } from '../store/action';
 const Research = (props) => {
   
     const filterData = (data, value) => {
-        return data.filter(d => Object.values(d).some(valueData => valueData.toString().includes(value.toLowerCase())));
+        return data.filter(d => Object.values(d).some(valueData => valueData && valueData.toString().includes(value.toLowerCase())));
     }
 
     const searchBanner = (value, data) => {
