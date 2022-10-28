@@ -8,6 +8,7 @@ const Research = (props) => {
     }
 
     const searchBanner = (value, data) => {
+        if(!data) return
         body(filterData(data, value));
     }
 

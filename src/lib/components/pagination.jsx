@@ -7,17 +7,19 @@ const Pagination = () => {
     let numberResults = useSelector((state) => state.result);
     let numberOfPage = Math.ceil(dataLength / numberResults)
     let buttonArray = new Array(numberOfPage);
-    return (
-        <>
-            <span>Prévious</span>
-            {buttonArray.fill(null).map((v, k) => {
-                return (
-                    <button onClick={() => pageSelected(k + 1)}>{k + 1}</button>
-                )
-            })}
-            <span>Next</span>
-        </>
-    )
+    if(buttonArray.length) {
+        return (
+            <>
+                <span>Prévious</span>
+                {buttonArray.fill(null).map((v, k) => {
+                    return (
+                        <button onClick={() => pageSelected(k + 1)}>{k + 1}</button>
+                    )
+                })}
+                <span>Next</span>
+            </>
+        )
+    }
 }
 
 export default Pagination;

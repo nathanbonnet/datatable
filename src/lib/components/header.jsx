@@ -12,6 +12,7 @@ const Header = (props) => {
     let columnFilter = useSelector((state) => state.name);
 
     const sortFunction = (sources, name) => {
+        if(!sources) return
         if(orderStore === 'asc') {
             sources.sort((a, b) => (a[name].toLowerCase() > b[name].toLowerCase()) ? 1 : -1);
             order('desc', name)

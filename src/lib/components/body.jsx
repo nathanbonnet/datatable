@@ -12,6 +12,7 @@ const Body = (props) => {
     let columnFilter = useSelector((state) => state.name);
 
     const sortFunction = (sources, name) => {
+        if (sources === null) return
         if(orderStore === 'asc') {
             sources.sort((a, b) => (a[name].toLowerCase() > b[name].toLowerCase()) ? 1 : -1);
             order('desc', name)
@@ -29,9 +30,9 @@ const Body = (props) => {
 
     let numberOfResult = useSelector((state) => state.result);
     const datas = information(sources, numberOfResult, page);
-    dataNumber(sources.length);
+    dataNumber(sources && sources.length);
     return (
-        datas.length ?
+        datas ?
             datas.map(data => {
                 return (
                     <tr>

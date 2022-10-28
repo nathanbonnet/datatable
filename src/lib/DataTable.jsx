@@ -10,15 +10,16 @@ import { body, dataNumber, order } from "./store/action";
 import './styles/App.css';
 
 const DataTable = (props) => {
-    body(props.sources);
-    dataNumber(props.sources.length);
+
+    body(props.sources && props.sources);
+    dataNumber(props.sources && props.sources.length);
     order(props.order, props.columnFilter)
 
     return (
       <div className="bloc-table">
         <div className="header-table">
           {props.show && <Length />}
-          {props.search && <Research data={props.sources} />}
+          {props.search && <Research data={props.sources && props.sources} />}
         </div>
         <table>
           <thead>
