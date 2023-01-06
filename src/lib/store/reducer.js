@@ -1,9 +1,9 @@
 const initialState = {
     page: 1,
     result: 10,
-    sources: {
+    sources: [{
       firstName: 'John',
-    },
+    }],
     dataNumber: 10,
     order: "asc",
     name: "firstName",
