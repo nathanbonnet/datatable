@@ -11,6 +11,8 @@ const Pagination = () => {
         return (
             <>
                 <span>Prévious</span>
+                {/* fill(null) permet de mettre la valeur (null) autant de fois qu'il y a de buttonArray.length dans 
+                le tableau pour pouvoir ensuite faire un map dessus */}
                 {buttonArray.fill(null).map((v, k) => {
                     return (
                         <button onClick={() => pageSelected(k + 1)}>{k + 1}</button>

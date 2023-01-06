@@ -9,6 +9,7 @@ const Research = (props) => {
 
     const searchBanner = (value, data) => {
         if(!data) return
+        //retourne le resultat dans le store redux grâce à l'action body
         body(filterData(data, value));
     }
 
