@@ -39,7 +39,7 @@ var reducer = function reducer() {
 
   if (action.type === "BODY") {
     return _objectSpread(_objectSpread({}, state), {}, {
-      sources: state.sources = action.sources
+      sources: state.sources.concat(action.sources)
     });
   }
 
