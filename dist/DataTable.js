@@ -46,9 +46,9 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var DataTable = function DataTable(props) {
-  (0, _action.body)(props.sources && props.sources); //on stocke la data d'origine pour que l'on puisse l'utiliser dans le component research
-
+  //on stocke la data d'origine pour que l'on puisse l'utiliser dans le component research
   (0, _react.useEffect)(function () {
+    (0, _action.body)(props.sources && props.sources);
     (0, _action.dataOrigine)(props.sources && props.dataOrigine);
   }, []);
   (0, _action.dataNumber)(props.sources && props.sources.length);

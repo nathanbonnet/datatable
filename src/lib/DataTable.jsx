@@ -10,10 +10,10 @@ import { body, dataNumber, order, dataOrigine } from "./store/action";
 import './styles/App.css';
 
 const DataTable = (props) => {
-    body(props.sources && props.sources);
 
     //on stocke la data d'origine pour que l'on puisse l'utiliser dans le component research
     useEffect(() => {
+      body(props.sources && props.sources);
       dataOrigine(props.sources && props.dataOrigine)
     }, [])
 
