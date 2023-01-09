@@ -14,9 +14,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var initialState = {
   page: 1,
   result: 10,
-  sources: {
-    firstName: 'John'
-  },
+  sources: [],
+  dataOrigine: [],
   dataNumber: 10,
   order: "asc",
   name: "firstName"
@@ -41,6 +40,12 @@ var reducer = function reducer() {
   if (action.type === "BODY") {
     return _objectSpread(_objectSpread({}, state), {}, {
       sources: state.sources = action.sources
+    });
+  }
+
+  if (action.type === "DATA_ORIGINE") {
+    return _objectSpread(_objectSpread({}, state), {}, {
+      dataOrigine: state.dataOrigine = action.dataOrigine
     });
   }
 

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.result = exports.pageSelected = exports.order = exports.dataNumber = exports.body = void 0;
+exports.result = exports.pageSelected = exports.order = exports.dataOrigine = exports.dataNumber = exports.body = void 0;
 
 var _index = require("./index");
 
@@ -33,6 +33,15 @@ var body = function body(sources) {
 };
 
 exports.body = body;
+
+var dataOrigine = function dataOrigine(_dataOrigine) {
+  _index.store.dispatch({
+    type: 'DATA_ORIGINE',
+    dataOrigine: _dataOrigine
+  });
+};
+
+exports.dataOrigine = dataOrigine;
 
 var dataNumber = function dataNumber(_dataNumber) {
   _index.store.dispatch({
