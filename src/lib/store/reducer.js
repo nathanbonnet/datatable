@@ -25,7 +25,7 @@ export const reducer = (state = initialState, action) => {
   if (action.type === "BODY") {
     return {
       ...state,
-      sources: [...action.sources],
+      sources: [...state.sources, ...action.sources],
     };
   }
   if (action.type === "DATA_ORIGINE") {

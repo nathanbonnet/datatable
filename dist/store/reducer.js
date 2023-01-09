@@ -51,7 +51,7 @@ var reducer = function reducer() {
 
   if (action.type === "BODY") {
     return _objectSpread(_objectSpread({}, state), {}, {
-      sources: _toConsumableArray(action.sources)
+      sources: [].concat(_toConsumableArray(state.sources), _toConsumableArray(action.sources))
     });
   }
 
