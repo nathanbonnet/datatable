@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from 'prop-types';
 import Body from './components/body';
 import Research from './components/research';
@@ -6,12 +6,17 @@ import DataNumber from './components/dataNumber';
 import Length from './components/Length';
 import Pagination from './components/pagination';
 import Header from "./components/header";
-import { body, dataNumber, order } from "./store/action";
+import { body, dataNumber, order, dataOrigine } from "./store/action";
 import './styles/App.css';
 
 const DataTable = (props) => {
-
     body(props.sources && props.sources);
+
+    //on stocke la data d'origine pour que l'on puisse l'utiliser dans le component research
+    useEffect(() => {
+      dataOrigine(props.sources && props.dataOrigine)
+    }, [])
+
     dataNumber(props.sources && props.sources.length);
     order(props.order, props.columnFilter)
 
@@ -19,7 +24,7 @@ const DataTable = (props) => {
       <div className="bloc-table">
         <div className="header-table">
           {props.show && <Length />}
-          {props.search && <Research data={props.sources && props.sources} />}
+          {props.search && <Research />}
         </div>
         <table>
           <thead>

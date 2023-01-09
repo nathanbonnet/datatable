@@ -12,6 +12,10 @@ export const body = (sources) => {
     store.dispatch({type: 'BODY', sources: sources})
 }
 
+export const dataOrigine = (dataOrigine) => {
+    store.dispatch({type: 'DATA_ORIGINE', dataOrigine: dataOrigine})
+}
+
 export const dataNumber = (dataNumber) => {
     store.dispatch({type: 'DATA_NUMBER', dataNumber: dataNumber})
 }

@@ -1,8 +1,9 @@
 import React from 'react';
 import { body } from '../store/action';
+import { useSelector } from 'react-redux';
 
-const Research = (props) => {
-  
+const Research = () => {
+    const dataOrigine = useSelector((state) => state.dataOrigine);
     const filterData = (data, value) => {
         return data.filter(d => Object.values(d).some(valueData => valueData && valueData.toString().includes(value.toLowerCase())));
     }
@@ -15,7 +16,7 @@ const Research = (props) => {
 
     return (
         <label>Search :
-            <input onChange={(e) => searchBanner(e.target.value, props.data)} type="search" id="search"></input>
+            <input onChange={(e) => searchBanner(e.target.value, dataOrigine)} type="search" id="search"></input>
         </label>
     )
 }

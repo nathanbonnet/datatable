@@ -1,9 +1,8 @@
 const initialState = {
     page: 1,
     result: 10,
-    sources: [{
-      firstName: 'John',
-    }],
+    sources: [{firstName: 'toto'}, {firstName: 'tata'}],
+    dataOrigine: [{firstName: 'test'}, {firstName: 'titi'}],
     dataNumber: 10,
     order: "asc",
     name: "firstName",
@@ -27,6 +26,12 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         sources: state.sources = action.sources
+      };
+    }
+    if (action.type === "DATA_ORIGINE") {
+      return {
+        ...state,
+        dataOrigine: state.dataOrigine = action.dataOrigine
       };
     }
     if (action.type === "DATA_NUMBER") {
