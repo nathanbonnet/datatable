@@ -15,10 +15,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Pagination = function Pagination() {
   var dataLength = (0, _reactRedux.useSelector)(function (state) {
-    return state.dataNumber;
+    return state.sources.length;
   });
   var numberResults = (0, _reactRedux.useSelector)(function (state) {
-    return state.result;
+    return state.itemPerPage;
   });
   var numberOfPage = Math.ceil(dataLength / numberResults);
   var buttonArray = new Array(numberOfPage);

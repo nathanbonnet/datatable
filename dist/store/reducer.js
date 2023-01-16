@@ -25,53 +25,82 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var initialState = {
   page: 1,
-  result: 10,
+  itemPerPage: 10,
   sources: [],
-  dataOrigine: [],
-  dataNumber: 10,
+  data: [],
   order: "asc",
-  name: "firstName"
+  name: "firstName",
+  search: ""
 };
+
+function paginate(state) {
+  var offset = (state.page - 1) * state.itemPerPage;
+  var sourcesFiltered = state.sources.filter(function (item) {
+    return Object.values(item).some(function (value) {
+      return value && value.toString().toLowerCase().includes(state.search.toLowerCase());
+    });
+  });
+  var data = sourcesFiltered.slice(offset, offset + state.itemPerPage);
+
+  if (sourcesFiltered.length < offset) {
+    offset = 0;
+    state.page = 1;
+  }
+
+  return _objectSpread(_objectSpread({}, state), {}, {
+    data: data,
+    offset: offset
+  });
+}
 
 var reducer = function reducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   if (action.type === "PAGE") {
-    return _objectSpread(_objectSpread({}, state), {}, {
-      page: state.page = action.page
-    });
+    console.log(action.page);
+    return paginate(_objectSpread(_objectSpread({}, state), {}, {
+      page: action.page
+    }));
   }
 
-  if (action.type === "RESULT") {
-    return _objectSpread(_objectSpread({}, state), {}, {
-      result: state.result = action.result
-    });
+  if (action.type === "SEARCH") {
+    return paginate(_objectSpread(_objectSpread({}, state), {}, {
+      search: action.search,
+      page: 1
+    }));
   }
 
-  if (action.type === "BODY") {
-    return _objectSpread(_objectSpread({}, state), {}, {
-      sources: [].concat(_toConsumableArray(state.sources), _toConsumableArray(action.sources))
-    });
+  if (action.type === "ITEM_PER_PAGE") {
+    return paginate(_objectSpread(_objectSpread({}, state), {}, {
+      itemPerPage: action.itemPerPage,
+      page: 1
+    }));
   }
 
-  if (action.type === "DATA_ORIGINE") {
-    return _objectSpread(_objectSpread({}, state), {}, {
-      dataOrigine: state.dataOrigine = action.dataOrigine
-    });
-  }
-
-  if (action.type === "DATA_NUMBER") {
-    return _objectSpread(_objectSpread({}, state), {}, {
-      dataNumber: state.dataNumber = action.dataNumber
-    });
+  if (action.type === "SAVE") {
+    return paginate(_objectSpread(_objectSpread({}, state), {}, {
+      sources: [].concat(_toConsumableArray(state.sources), _toConsumableArray(action.sources)),
+      page: 1
+    }));
   }
 
   if (action.type === "ORDER") {
-    return _objectSpread(_objectSpread({}, state), {}, {
-      order: state.order = action.order,
-      name: state.name = action.name
-    });
+    if (action.order === 'asc') {
+      state.sources.sort(function (a, b) {
+        return a.firstName.toLowerCase() > b.firstName.toLowerCase() ? 1 : -1;
+      });
+    } else {
+      state.sources.sort(function (a, b) {
+        return a.firstName.toLowerCase() < b.firstName.toLowerCase() ? 1 : -1;
+      });
+    }
+
+    return paginate(_objectSpread(_objectSpread({}, state), {}, {
+      order: action.order,
+      name: action.name,
+      page: 1
+    }));
   }
 
   return state;

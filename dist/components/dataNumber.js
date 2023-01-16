@@ -11,12 +11,12 @@ var _reactRedux = require("react-redux");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var DataNumber = function DataNumber(props) {
+var DataNumber = function DataNumber() {
   var numberEntries = (0, _reactRedux.useSelector)(function (state) {
-    return state.result;
+    return state.itemPerPage;
   });
   var dataLength = (0, _reactRedux.useSelector)(function (state) {
-    return state.dataNumber;
+    return state.sources.length;
   });
   return /*#__PURE__*/_react.default.createElement("span", {
     className: "show"

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.result = exports.pageSelected = exports.order = exports.dataOrigine = exports.dataNumber = exports.body = void 0;
+exports.search = exports.save = exports.pageSelected = exports.order = exports.itemPerPage = void 0;
 
 var _index = require("./index");
 
@@ -16,47 +16,38 @@ var pageSelected = function pageSelected(page) {
 
 exports.pageSelected = pageSelected;
 
-var result = function result(_result) {
+var save = function save(sources) {
   _index.store.dispatch({
-    type: 'RESULT',
-    result: _result
-  });
-};
-
-exports.result = result;
-
-var body = function body(sources) {
-  _index.store.dispatch({
-    type: 'BODY',
+    type: 'SAVE',
     sources: sources
   });
 };
 
-exports.body = body;
+exports.save = save;
 
-var dataOrigine = function dataOrigine(_dataOrigine) {
+var itemPerPage = function itemPerPage(_itemPerPage) {
   _index.store.dispatch({
-    type: 'DATA_ORIGINE',
-    dataOrigine: _dataOrigine
+    type: 'ITEM_PER_PAGE',
+    itemPerPage: _itemPerPage
   });
 };
 
-exports.dataOrigine = dataOrigine;
+exports.itemPerPage = itemPerPage;
 
-var dataNumber = function dataNumber(_dataNumber) {
+var search = function search(_search) {
   _index.store.dispatch({
-    type: 'DATA_NUMBER',
-    dataNumber: _dataNumber
+    type: 'SEARCH',
+    search: _search
   });
 };
 
-exports.dataNumber = dataNumber;
+exports.search = search;
 
-var order = function order(_order, name) {
+var order = function order(_order, columnFilter) {
   _index.store.dispatch({
     type: 'ORDER',
     order: _order,
-    name: name
+    name: columnFilter
   });
 };
 

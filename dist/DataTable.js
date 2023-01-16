@@ -48,11 +48,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var DataTable = function DataTable(props) {
   //on stocke la data d'origine pour que l'on puisse l'utiliser dans le component research
   (0, _react.useEffect)(function () {
-    (0, _action.body)(props.sources && props.sources);
-    (0, _action.dataOrigine)(props.sources && props.dataOrigine);
+    (0, _action.order)(props.order, props.columnFilter);
   }, []);
-  (0, _action.dataNumber)(props.sources && props.sources.length);
-  (0, _action.order)(props.order, props.columnFilter);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "bloc-table"
   }, /*#__PURE__*/_react.default.createElement("div", {

@@ -12,7 +12,7 @@ var _action = require("../store/action");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var changeLength = function changeLength() {
-  (0, _action.result)(document.getElementById('show').value);
+  (0, _action.itemPerPage)(document.getElementById('show').value);
 };
 
 var Length = function Length() {
