@@ -1,51 +1,60 @@
 const initialState = {
   page: 1,
-  result: 10,
+  itemPerPage: 10,
   sources: [],
-  dataOrigine: [],
-  dataNumber: 10,
+  data: [],
   order: "asc",
   name: "firstName",
+  search: ""
 }
 
 
+function paginate(state) {
+  let offset = (state.page - 1) * state.itemPerPage;
+  
+  const sourcesFiltered = state.sources.filter((item) => Object.values(item).some((value) => value && value.toString().toLowerCase().includes(state.search.toLowerCase())));
+  
+  const data = sourcesFiltered.slice(offset, offset + state.itemPerPage);
+
+  if (sourcesFiltered.length < offset) {
+    offset = 0;
+    state.page = 1;
+  }
+  
+  return {
+    ...state,
+    data,
+    offset
+  };
+}
+
 export const reducer = (state = initialState, action) => {
   if (action.type === "PAGE") {
-    return {
-      ...state,
-      page: state.page = action.page
-    };
+    console.log(action.page)
+    return paginate({...state, page: action.page});
   }
-  if (action.type === "RESULT") {
-    return {
-      ...state,
-      result: state.result = action.result
-    };
+  if (action.type === "SEARCH") {
+    return paginate({...state, search: action.search, page: 1});
   }
-  if (action.type === "BODY") {
-    return {
-      ...state,
-      sources: [...state.sources, ...action.sources],
-    };
+  if (action.type === "ITEM_PER_PAGE") {
+    return paginate({...state, itemPerPage: action.itemPerPage, page: 1});
   }
-  if (action.type === "DATA_ORIGINE") {
-    return {
-      ...state,
-      dataOrigine: state.dataOrigine = action.dataOrigine
-    };
-  }
-  if (action.type === "DATA_NUMBER") {
-    return {
-      ...state,
-      dataNumber: state.dataNumber = action.dataNumber
-    };
+  if (action.type === "SAVE") {
+    return paginate({...state, sources: [...state.sources, ...action.sources], page: 1});
   }
   if (action.type === "ORDER") {
-    return {
+    if(action.order === 'asc') {
+      state.sources.sort((a, b) => (a.firstName.toLowerCase() > b.firstName.toLowerCase()) ? 1 : -1);
+    } else {
+      state.sources.sort((a, b) => (a.firstName.toLowerCase() < b.firstName.toLowerCase()) ? 1 : -1);
+    }
+    return paginate({
       ...state,
-      order: state.order = action.order,
-      name: state.name = action.name
-    };
+      order: action.order,
+      name: action.name,
+      page: 1
+    });
   }
+  
   return state
 }

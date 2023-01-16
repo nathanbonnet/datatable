@@ -3,25 +3,17 @@ import { store } from './index'
 export const pageSelected = (page) => {
     store.dispatch({type: 'PAGE', page: page})
 }
-
-export const result = (result) => {
-    store.dispatch({type: 'RESULT', result: result})
+export const save = (sources) => {
+    store.dispatch({type: 'SAVE', sources: sources})
 }
 
-export const body = (sources) => {
-    store.dispatch({type: 'BODY', sources: sources})
+export const itemPerPage = (itemPerPage) => {
+    store.dispatch({type: 'ITEM_PER_PAGE', itemPerPage: itemPerPage})
 }
 
-export const dataOrigine = (dataOrigine) => {
-    store.dispatch({type: 'DATA_ORIGINE', dataOrigine: dataOrigine})
+export const search = (search) => {
+    store.dispatch({type: 'SEARCH', search: search})
 }
-
-export const dataNumber = (dataNumber) => {
-    store.dispatch({type: 'DATA_NUMBER', dataNumber: dataNumber})
+export const order = (order, columnFilter) => {
+    store.dispatch({type: 'ORDER', order: order, name: columnFilter})
 }
-
-export const order = (order, name) => {
-    store.dispatch({type: 'ORDER', order: order, name: name})
-}
-
-

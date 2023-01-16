@@ -1,39 +1,17 @@
 import React, { useEffect } from 'react';
-import information from './information';
 import PropTypes from 'prop-types';
-import { dataNumber, body } from '../store/action';
-import { useSelector } from 'react-redux';
 import { order } from '../store/action';
+import { useSelector } from 'react-redux';
 
 const Body = (props) => {
-    let sources = useSelector((state) => state.sources);
-    const page = useSelector((state) => state.page)
-    let orderStore = useSelector((state) => state.order);
-    let columnFilter = useSelector((state) => state.name);
-
-    const sortFunction = (sources, name) => {
-        if (sources === null) return
-        if(orderStore === 'asc') {
-            sources.sort((a, b) => (a[name].toLowerCase() > b[name].toLowerCase()) ? 1 : -1);
-            order('desc', name)
-        }
-        if(orderStore === 'desc') {
-            sources.sort((a, b) => (a[name].toLowerCase() < b[name].toLowerCase()) ? 1 : -1);
-            order('asc', name)
-        }
-        body([...sources])
-    }
-
+    let data = useSelector((state) => state.data);
     useEffect(() => {
-        sortFunction(sources, columnFilter)
+        order()
     }, []);
 
-    let numberOfResult = useSelector((state) => state.result);
-    const datas = information(sources, numberOfResult, page);
-    dataNumber(sources && sources.length);
     return (
-        datas && datas.length ?
-            datas.map(data => {
+        data && data.length ?
+            data.map(data => {
                 return (
                     <tr>
                         {props.columns && Object.keys(props.columns).map(column => {

@@ -1,8 +1,8 @@
 import React from 'react';
-import { result } from '../store/action';
+import { itemPerPage } from '../store/action';
 
 const changeLength = () => {
-    result(document.getElementById('show').value)
+    itemPerPage(document.getElementById('show').value)
 }
 
 const Length = () => {

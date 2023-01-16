@@ -6,48 +6,44 @@ import DataNumber from './components/dataNumber';
 import Length from './components/Length';
 import Pagination from './components/pagination';
 import Header from "./components/header";
-import { body, dataNumber, order, dataOrigine } from "./store/action";
+import { order } from "./store/action";
 import './styles/App.css';
 
 const DataTable = (props) => {
+  //on stocke la data d'origine pour que l'on puisse l'utiliser dans le component research
 
-    //on stocke la data d'origine pour que l'on puisse l'utiliser dans le component research
-    useEffect(() => {
-      body(props.sources && props.sources);
-      dataOrigine(props.sources && props.dataOrigine)
-    }, [])
-
-    dataNumber(props.sources && props.sources.length);
+  useEffect(() => {
     order(props.order, props.columnFilter)
+  }, [])
 
-    return (
-      <div className="bloc-table">
-        <div className="header-table">
-          {props.show && <Length />}
-          {props.search && <Research />}
-        </div>
-        <table>
-          <thead>
-            <tr>
-              {props.columns && Object.entries(props.columns).map(([name, label]) => {
-                return (
-                  <Header label={label} name={name} />
-                )
-              })}
-            </tr>
-          </thead>
-          <tbody id="t-body">
-            <Body columns={props.columns} />
-          </tbody>
-        </table>
-        <div className="footer-table">
-          {props.dataNumber && <DataNumber /> }
-          <div className="page">
-            {props.paginationButton && <Pagination /> }
-          </div>
+  return (
+    <div className="bloc-table">
+      <div className="header-table">
+        {props.show && <Length />}
+        {props.search && <Research />}
+      </div>
+      <table>
+        <thead>
+          <tr>
+            {props.columns && Object.entries(props.columns).map(([name, label]) => {
+              return (
+                <Header label={label} name={name} />
+              )
+            })}
+          </tr>
+        </thead>
+        <tbody id="t-body">
+          <Body columns={props.columns} />
+        </tbody>
+      </table>
+      <div className="footer-table">
+        {props.dataNumber && <DataNumber /> }
+        <div className="page">
+          {props.paginationButton && <Pagination /> }
         </div>
       </div>
-    )
+    </div>
+  )
 }
 
 DataTable.prototype = {

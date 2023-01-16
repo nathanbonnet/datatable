@@ -11,8 +11,7 @@ const Data = () => {
 
   return (
     <DataTable
-        sources={[{firstName: 'John'}, {firstName: 'John'}, {firstName: 'John'}]}
-        dataOrigine={[{firstName: 'John'}, {firstName: 'John'}, {firstName: 'John'}]}
+        sources={donnees}
         show={true}
         search={true}
         columns={{
