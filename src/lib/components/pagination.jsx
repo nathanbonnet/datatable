@@ -3,7 +3,8 @@ import { pageSelected } from '../store/action';
 import { useSelector } from 'react-redux';
 
 const Pagination = () => {
-    let dataLength = useSelector((state) => state.sources.length);
+    let search = useSelector((state) => state.search);
+    let dataLength = useSelector((state) => search ? state.sourcesFiltered.length : state.sources.length);
     let numberResults = useSelector((state) => state.itemPerPage);
     let numberOfPage = Math.ceil(dataLength / numberResults)
     let buttonArray = new Array(numberOfPage);

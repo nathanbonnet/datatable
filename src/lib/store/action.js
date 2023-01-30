@@ -11,8 +11,8 @@ export const itemPerPage = (itemPerPage) => {
     store.dispatch({type: 'ITEM_PER_PAGE', itemPerPage: itemPerPage})
 }
 
-export const search = (search) => {
-    store.dispatch({type: 'SEARCH', search: search})
+export const search = (search, page) => {
+    store.dispatch({type: 'SEARCH', search: search, page: page})
 }
 export const order = (order, columnFilter) => {
     store.dispatch({type: 'ORDER', order: order, name: columnFilter})

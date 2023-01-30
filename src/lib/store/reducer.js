@@ -11,11 +11,13 @@ const initialState = {
 
 function paginate(state) {
   let offset = (state.page - 1) * state.itemPerPage;
+
+  let search = state.search
+  let page = state.page
   
   const sourcesFiltered = state.sources.filter((item) => Object.values(item).some((value) => value && value.toString().toLowerCase().includes(state.search.toLowerCase())));
-  
   const data = sourcesFiltered.slice(offset, offset + state.itemPerPage);
-
+  
   if (sourcesFiltered.length < offset) {
     offset = 0;
     state.page = 1;
@@ -24,23 +26,25 @@ function paginate(state) {
   return {
     ...state,
     data,
-    offset
+    offset,
+    search,
+    page,
+    sourcesFiltered
   };
 }
 
 export const reducer = (state = initialState, action) => {
   if (action.type === "PAGE") {
-    console.log(action.page)
     return paginate({...state, page: action.page});
   }
   if (action.type === "SEARCH") {
-    return paginate({...state, search: action.search, page: 1});
+    return paginate({...state, search: action.search, page: action.page});
   }
   if (action.type === "ITEM_PER_PAGE") {
-    return paginate({...state, itemPerPage: action.itemPerPage, page: 1});
+    return paginate({...state, itemPerPage: action.itemPerPage});
   }
   if (action.type === "SAVE") {
-    return paginate({...state, sources: [...state.sources, ...action.sources], page: 1});
+    return paginate({...state, sources: [...state.sources, ...action.sources]});
   }
   if (action.type === "ORDER") {
     if(action.order === 'asc') {

@@ -14,8 +14,11 @@ var _reactRedux = require("react-redux");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Pagination = function Pagination() {
+  var search = (0, _reactRedux.useSelector)(function (state) {
+    return state.search;
+  });
   var dataLength = (0, _reactRedux.useSelector)(function (state) {
-    return state.sources.length;
+    return search ? state.sourcesFiltered.length : state.sources.length;
   });
   var numberResults = (0, _reactRedux.useSelector)(function (state) {
     return state.itemPerPage;

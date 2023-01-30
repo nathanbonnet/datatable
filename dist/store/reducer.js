@@ -35,6 +35,8 @@ var initialState = {
 
 function paginate(state) {
   var offset = (state.page - 1) * state.itemPerPage;
+  var search = state.search;
+  var page = state.page;
   var sourcesFiltered = state.sources.filter(function (item) {
     return Object.values(item).some(function (value) {
       return value && value.toString().toLowerCase().includes(state.search.toLowerCase());
@@ -49,7 +51,10 @@ function paginate(state) {
 
   return _objectSpread(_objectSpread({}, state), {}, {
     data: data,
-    offset: offset
+    offset: offset,
+    search: search,
+    page: page,
+    sourcesFiltered: sourcesFiltered
   });
 }
 
@@ -58,7 +63,6 @@ var reducer = function reducer() {
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   if (action.type === "PAGE") {
-    console.log(action.page);
     return paginate(_objectSpread(_objectSpread({}, state), {}, {
       page: action.page
     }));
@@ -67,21 +71,19 @@ var reducer = function reducer() {
   if (action.type === "SEARCH") {
     return paginate(_objectSpread(_objectSpread({}, state), {}, {
       search: action.search,
-      page: 1
+      page: action.page
     }));
   }
 
   if (action.type === "ITEM_PER_PAGE") {
     return paginate(_objectSpread(_objectSpread({}, state), {}, {
-      itemPerPage: action.itemPerPage,
-      page: 1
+      itemPerPage: action.itemPerPage
     }));
   }
 
   if (action.type === "SAVE") {
     return paginate(_objectSpread(_objectSpread({}, state), {}, {
-      sources: [].concat(_toConsumableArray(state.sources), _toConsumableArray(action.sources)),
-      page: 1
+      sources: [].concat(_toConsumableArray(state.sources), _toConsumableArray(action.sources))
     }));
   }
 

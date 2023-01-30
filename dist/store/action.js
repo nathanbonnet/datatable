@@ -34,10 +34,11 @@ var itemPerPage = function itemPerPage(_itemPerPage) {
 
 exports.itemPerPage = itemPerPage;
 
-var search = function search(_search) {
+var search = function search(_search, page) {
   _index.store.dispatch({
     type: 'SEARCH',
-    search: _search
+    search: _search,
+    page: page
   });
 };
 
