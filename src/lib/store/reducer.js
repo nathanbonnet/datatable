@@ -16,7 +16,7 @@ function paginate(state) {
   let page = state.page
   
   const sourcesFiltered = state.sources.filter((item) => Object.values(item).some((value) => value && value.toString().toLowerCase().includes(state.search.toLowerCase())));
-  const data = sourcesFiltered.slice(offset, offset + state.itemPerPage);
+  const data = sourcesFiltered.slice(offset, offset + parseInt(state.itemPerPage));
   
   if (sourcesFiltered.length < offset) {
     offset = 0;

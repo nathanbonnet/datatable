@@ -42,7 +42,7 @@ function paginate(state) {
       return value && value.toString().toLowerCase().includes(state.search.toLowerCase());
     });
   });
-  var data = sourcesFiltered.slice(offset, offset + state.itemPerPage);
+  var data = sourcesFiltered.slice(offset, offset + parseInt(state.itemPerPage));
 
   if (sourcesFiltered.length < offset) {
     offset = 0;

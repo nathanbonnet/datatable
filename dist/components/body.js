@@ -29,8 +29,12 @@ var Body = function Body(props) {
     (0, _action.order)();
   }, []);
   return data && data.length ? data.map(function (data) {
-    return /*#__PURE__*/_react.default.createElement("tr", null, props.columns && Object.keys(props.columns).map(function (column) {
-      return /*#__PURE__*/_react.default.createElement("td", null, data[column]);
+    return /*#__PURE__*/_react.default.createElement("tr", {
+      key: data
+    }, props.columns && Object.keys(props.columns).map(function (column) {
+      return /*#__PURE__*/_react.default.createElement("td", {
+        key: column
+      }, data[column]);
     }));
   }) : /*#__PURE__*/_react.default.createElement("tr", null, /*#__PURE__*/_react.default.createElement("th", null, "Aucun \xE9l\xE9ment trouv\xE9"));
 };

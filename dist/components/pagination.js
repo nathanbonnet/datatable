@@ -29,6 +29,7 @@ var Pagination = function Pagination() {
   if (buttonArray.length) {
     return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("span", null, "Pr\xE9vious"), buttonArray.fill(null).map(function (v, k) {
       return /*#__PURE__*/_react.default.createElement("button", {
+        key: k + 1,
         onClick: function onClick() {
           return (0, _action.pageSelected)(k + 1);
         }

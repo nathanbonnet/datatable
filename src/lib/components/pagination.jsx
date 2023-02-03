@@ -16,7 +16,7 @@ const Pagination = () => {
                 le tableau pour pouvoir ensuite faire un map dessus */}
                 {buttonArray.fill(null).map((v, k) => {
                     return (
-                        <button onClick={() => pageSelected(k + 1)}>{k + 1}</button>
+                        <button key={k + 1} onClick={() => pageSelected(k + 1)}>{k + 1}</button>
                     )
                 })}
                 <span>Next</span>

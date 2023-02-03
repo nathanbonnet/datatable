@@ -13,10 +13,10 @@ const Body = (props) => {
         data && data.length ?
             data.map(data => {
                 return (
-                    <tr>
+                    <tr key={data}>
                         {props.columns && Object.keys(props.columns).map(column => {
                             return (
-                                <td>{data[column]}</td>
+                                <td key={column}>{data[column]}</td>
                             )
                         })}
                     </tr>
