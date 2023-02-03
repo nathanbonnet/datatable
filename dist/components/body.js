@@ -32,7 +32,7 @@ var Body = function Body(props) {
     return /*#__PURE__*/_react.default.createElement("tr", null, props.columns && Object.keys(props.columns).map(function (column) {
       return /*#__PURE__*/_react.default.createElement("td", null, data[column]);
     }));
-  }) : /*#__PURE__*/_react.default.createElement("p", null, "Aucun \xE9l\xE9ment trouv\xE9");
+  }) : /*#__PURE__*/_react.default.createElement("tr", null, /*#__PURE__*/_react.default.createElement("th", null, "Aucun \xE9l\xE9ment trouv\xE9"));
 };
 
 Body.prototype = {

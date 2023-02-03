@@ -60,6 +60,7 @@ var DataTable = function DataTable(props) {
         label = _ref2[1];
 
     return /*#__PURE__*/_react.default.createElement(_header.default, {
+      key: label,
       label: label,
       name: name
     });

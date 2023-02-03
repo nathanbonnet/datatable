@@ -27,7 +27,7 @@ const DataTable = (props) => {
           <tr>
             {props.columns && Object.entries(props.columns).map(([name, label]) => {
               return (
-                <Header label={label} name={name} />
+                <Header key={label} label={label} name={name} />
               )
             })}
           </tr>

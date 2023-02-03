@@ -22,7 +22,12 @@ const Body = (props) => {
                     </tr>
                 )
             })
-        : <p>Aucun élément trouvé</p>
+        : 
+            <tr>
+                <th>
+                    Aucun élément trouvé
+                </th>
+            </tr>
     )
 }
 

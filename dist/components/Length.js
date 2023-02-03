@@ -9,6 +9,8 @@ var _react = _interopRequireDefault(require("react"));
 
 var _action = require("../store/action");
 
+var _reactRedux = require("react-redux");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var changeLength = function changeLength() {
@@ -16,9 +18,13 @@ var changeLength = function changeLength() {
 };
 
 var Length = function Length() {
+  var length = (0, _reactRedux.useSelector)(function (state) {
+    return state.itemPerPage;
+  });
   return /*#__PURE__*/_react.default.createElement("label", {
-    for: "show"
+    htmlFor: "show"
   }, "Show", /*#__PURE__*/_react.default.createElement("select", {
+    defaultValue: length,
     onChange: function onChange() {
       return changeLength();
     },
